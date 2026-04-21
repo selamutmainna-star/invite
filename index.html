@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Pernikahan Esra & Icha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body { 
+      margin: 0; 
+      font-family: 'Montserrat', sans-serif; 
+      overflow: hidden; 
+      background-color: #0d0b08; 
+    }
+
+    #cover {
+      position: fixed; 
+      inset: 0; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      z-index: 9999; 
+      text-align: center;
+      transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 1s ease;
+      /* Pastikan foto4.jpeg ada di folder yang sama */
+      background: linear-gradient(rgba(13,11,8,0.5), rgba(13,11,8,0.8)), url('foto4.jpeg'); 
+      background-size: cover; 
+      background-position: center;
+    }
+
+    .cover-content { 
+      transition: transform 1s ease, opacity 0.8s ease; 
+      padding: 20px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    /* Dekorasi Garis Atas-Bawah */
+    .line-deco {
+      width: 50px;
+      height: 1px;
+      background: #c9a96e;
+      margin: 20px auto;
+      opacity: 0.6;
+    }
+
+    h1 { 
+      font-family: 'Cormorant Garamond', serif; 
+      font-size: 56px; 
+      color: #f5ede0; 
+      line-height: 0.9; 
+      margin: 20px 0; 
+      font-weight: 300;
+      letter-spacing: -1px;
+    }
+
+    .ampersand {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 35px;
+      color: #c9a96e;
+      display: block;
+      margin: 5px 0;
+    }
+
+    .opened { 
+      transform: scale(1.2); 
+      opacity: 0; 
+      pointer-events: none; 
+    }
+
+    .content-fade { 
+      transform: translateY(-30px); 
+      opacity: 0; 
+    }
+
+    .btn {
+      padding: 14px 40px; 
+      border: 1px solid #c9a96e; 
+      color: #f5ede0; 
+      background: rgba(201, 169, 110, 0.05);
+      cursor: pointer; 
+      margin-top: 30px; 
+      letter-spacing: 4px; 
+      text-transform: uppercase;
+      font-size: 10px; 
+      transition: all 0.4s; 
+      outline: none;
+      backdrop-filter: blur(2px);
+    }
+
+    .btn:hover { 
+      background: #c9a96e; 
+      color: #0d0b08;
+      box-shadow: 0 0 30px rgba(201, 169, 110, 0.3); 
+      letter-spacing: 6px; 
+    }
+
+    .tamu-box {
+      margin-top: 40px;
+      animation: fadeInUp 1.5s ease;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<div id="cover">
+  <div class="cover-content" id="mainContent">
+    <p style="letter-spacing:6px; color:#c9a96e; font-size:10px; font-weight: 200; text-transform: uppercase;">The Wedding of</p>
+    
+    <div class="line-deco"></div>
+    
+    <h1>Esra <span class="ampersand">&</span> Icha</h1>
+    
+    <div class="line-deco"></div>
+
+    <div class="tamu-box">
+      <p style="color:#9e8a72; font-size:11px; letter-spacing:3px; text-transform: uppercase; margin-bottom: 10px;">Kepada Yth:</p>
+      <h3 id="coverNama" style="color:#f5ede0; font-family:'Cormorant Garamond', serif; font-size:26px; margin: 0; font-weight: 300; font-style: italic;">Tamu Undangan</h3>
+      <p style="color:#9e8a72; font-size:12px; letter-spacing:2px; margin-top: 5px;">di Tempat</p>
+    </div>
+
+    <button onclick="bukaUndangan()" class="btn">Buka Undangan</button>
+  </div>
+</div>
+
+<script>
+  // Mengambil nama dari URL (misal: index.html?to=Nama+Tamu)
+  const params = new URLSearchParams(window.location.search);
+  const nama = params.get("to");
+  if (nama) {
+    document.getElementById("coverNama").textContent = decodeURIComponent(nama.replace(/\+/g, " "));
+  }
+
+  function bukaUndangan() {
+    const cover = document.getElementById("cover");
+    const content = document.getElementById("mainContent");
+    
+    // Animasi menghilang
+    content.classList.add("content-fade");
+    cover.classList.add("opened");
+
+    // Berpindah ke halaman utama setelah animasi selesai
+    setTimeout(() => {
+      let tujuan = "undangan.html";
+      let query = [];
+      if (nama) query.push("to=" + encodeURIComponent(nama));
+      query.push("play=true"); // Sinyal untuk auto-play musik di halaman sebelah
+      window.location.href = tujuan + "?" + query.join("&");
+    }, 1100);
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Pernikahan Esra & Icha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+  <style>
+    /* Tambahan sedikit CSS untuk merapikan posisi ikon */
+    .icon-inline {
+      font-size: 16px !important;
+      vertical-align: middle;
+      margin-right: 5px;
+      color: #c9a96e;
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0d0b08;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 0 0 4rem;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 500px;
+      background: #0d0b08;
+      position: relative;
+    }
+
+    /* ── ANIMASI REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1.2s cubic-bezier(0.2, 0.6, 0.2, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 550px;
+      overflow: hidden;
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.55) sepia(0.2);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(13,11,8,0.2) 0%, rgba(13,11,8,0) 50%, rgba(13,11,8,1) 100%);
+    }
+
+    .hero-text {
+      position: absolute;
+      bottom: 30px;
+      left: 0;
+      right: 0;
+      padding: 0 2rem;
+      text-align: center;
+    }
+
+    .pre-title {
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      color: #c9a96e;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      color: #f5ede0;
+      line-height: 1;
+    }
+
+    .names-amp {
+      font-style: italic;
+      color: #c9a96e;
+      font-size: 40px;
+      display: block;
+      margin: 5px 0;
+    }
+
+    /* ── BODY CONTENT ── */
+    .content-padding {
+      padding: 2rem 2.5rem;
+    }
+
+    .tamu-section { text-align: center; margin-bottom: 3rem; }
+    .couple-intro { text-align: center; }
+    .couple-name-full { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 26px; color: #f5ede0; margin: 10px 0 5px; }
+    .couple-parent { font-size: 11px; color: #7a6a58; line-height: 1.6; }
+    .couple-sep { font-family: 'Cormorant Garamond', serif; font-size: 35px; color: #c9a96e; margin: 1.5rem 0; opacity: 0.6; }
+
+    /* ── PHOTO GRID ── */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 2rem 0;
+    }
+    .ph { width: 100%; object-fit: cover; filter: brightness(0.7); border-radius: 2px; transition: 0.5s; }
+    .ph:hover { filter: brightness(1); }
+    .ph-tall { grid-row: span 2; height: 100%; aspect-ratio: 4/5; }
+    .ph-small { aspect-ratio: 1/1; }
+
+    /* ── DECORATION ── */
+    .divider-line {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 3rem 0;
+    }
+    .divider-line::before, .divider-line::after {
+      content: ''; flex: 1; height: 0.5px; background: #c9a96e; opacity: 0.3;
+    }
+    .divider-ornament { color: #c9a96e; font-size: 12px; letter-spacing: 5px; }
+
+    /* ── EVENTS ── */
+    .event-block {
+      background: rgba(201,169,110,0.05);
+      border: 0.5px solid rgba(201,169,110,0.15);
+      padding: 2rem 1.5rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      border-radius: 4px;
+    }
+    .event-tag { font-size: 10px; letter-spacing: 0.3em; color: #c9a96e; text-transform: uppercase; margin-bottom: 1rem; }
+    .event-date { font-family: 'Cormorant Garamond', serif; font-size: 28px; color: #f5ede0; }
+    .event-venue { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 17px; color: #d4b896; margin: 10px 0; }
+    .event-address { font-size: 11px; color: #7a6a58; line-height: 1.6; }
+
+    .map-btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 10px 25px;
+      border: 0.5px solid #c9a96e;
+      color: #c9a96e;
+      text-decoration: none;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: 0.3s;
+      background: transparent;
+      cursor: pointer;
+    }
+    .map-btn:hover { background: rgba(201,169,110,0.1); }
+
+    /* ── CLOSING ── */
+    .closing-section { text-align: center; margin: 3rem 0; padding: 0 10px; }
+    .closing-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; color: #f5ede0; line-height: 1.8; font-weight: 300; }
+
+    /* ── COUNTDOWN ── */
+    .countdown-row { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1.5rem; }
+    .cd-item { text-align: center; }
+    .cd-num { font-family: 'Cormorant Garamond', serif; font-size: 35px; color: #f5ede0; }
+    .cd-label { font-size: 8px; letter-spacing: 0.2em; color: #7a6a58; text-transform: uppercase; }
+
+    /* ── MUSIC ── */
+    #musicControl {
+      position: fixed; bottom: 25px; right: 25px;
+      width: 50px; height: 50px;
+      background: rgba(13,11,8,0.9);
+      border: 1px solid #c9a96e;
+      border-radius: 50%;
+      display: flex; justify-content: center; align-items: center;
+      cursor: pointer; z-index: 9999;
+      transition: 0.5s;
+    }
+    .rotating { animation: spin 4s linear infinite; }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    .footer-text { text-align: center; color: #3a322a; font-family: 'Cormorant Garamond', serif; font-style: italic; margin-top: 3rem; }
+  </style>
+</head>
+<body>
+
+<audio id="weddingMusic" loop>
+  <source src="music.mpeg" type="audio/mpeg">
+</audio>
+
+<div id="musicControl" onclick="toggleMusic()">
+  <svg id="musicIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.5">
+    <circle cx="12" cy="12" r="10"></circle>
+    <circle cx="12" cy="12" r="3"></circle>
+    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+  </svg>
+</div>
+
+<div class="card">
+  <div class="hero">
+    <img class="hero-img" src="foto5.jpeg" alt="Background">
+    <div class="hero-overlay"></div>
+    <div class="hero-text">
+      <p class="pre-title">The Wedding of</p>
+      <div class="names">Esra <span class="names-amp">&</span> Icha</div>
+    </div>
+  </div>
+
+  <div class="content-padding">
+    
+    <div class="tamu-section reveal">
+      <p style="color:#9e8a72; font-size:10px; letter-spacing:0.3em; text-transform:uppercase;">Kepada Yth:</p>
+      <h3 id="namaTamu" style="color:#f5ede0; font-family:'Cormorant Garamond', serif; font-size:24px; font-weight:300; margin-top:5px;">Tamu Undangan</h3>
+    </div>
+
+    <div class="couple-intro reveal">
+      <p style="color:#c9a96e; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:2rem;">Kami mengundang Anda di pernikahan kami:</p>
+      
+      <div class="photo-grid">
+        <img class="ph ph-tall reveal" src="foto1.jpeg" alt="Foto 1">
+        <img class="ph ph-small reveal" src="foto2.jpeg" alt="Foto 2">
+        <img class="ph ph-small reveal" src="foto3.jpeg" alt="Foto 3">
+      </div>
+
+      <div class="reveal">
+        <p style="font-size:10px; color:#9e8a72; text-transform:uppercase; letter-spacing:2px;">Mempelai Pria</p>
+        <div class="couple-name-full">Esra Sumimmi</div>
+        <div class="couple-parent">Putra Ke - 7</div>
+        <div class="couple-parent">Bpk. Simon Lumba & Ibu Maria Kendek</div>
+      </div>
+
+      <div class="couple-sep reveal">∿</div>
+
+      <div class="reveal">
+        <p style="font-size:10px; color:#9e8a72; text-transform:uppercase; letter-spacing:2px;">Mempelai Wanita</p>
+        <div class="couple-name-full">Rishendy Bunga</div>
+        <div class="couple-parent">Putri Ke - 3</div>
+        <div class="couple-parent">Bpk. Simon Bunga & Ibu Rosalim Sampe Bua</div>
+      </div>
+    </div>
+
+    <div class="divider-line reveal"><span class="divider-ornament">⋆ ⋆ ⋆</span></div>
+
+    <div class="reveal" style="text-align:center; padding:0 10px;">
+      <p style="font-family:'Cormorant Garamond', serif; font-style:italic; color:#9e8a72; line-height:1.8; font-size:16px;">
+        "Dan firman-Nya: Sebab itu laki-laki akan meninggalkan ayah dan ibunya dan bersatu dengan isterinya, sehingga keduanya itu menjadi satu daging. Demikianlah mereka bukan lagi dua, melainkan satu."
+      </p>
+      <p style="font-size:9px; letter-spacing:0.3em; color:#5a4e42; text-transform:uppercase; margin-top:15px;">Matius 19:5-6</p>
+    </div>
+
+    <div class="divider-line reveal"><span class="divider-ornament">✦ ✦ ✦</span></div>
+
+    <p class="reveal" style="text-align:center; font-size:10px; color:#c9a96e; letter-spacing:0.4em; text-transform:uppercase; margin-bottom:1.5rem;">Rangkaian Acara</p>
+
+    <div class="event-block reveal">
+      <div class="event-tag">Pemberkatan</div>
+      <div class="event-date">
+        <span class="material-symbols-outlined icon-inline">calendar_month</span>Kamis, 28 Mei 2026
+      </div>
+      <p style="color:#9e8a72; font-size:11px; margin-top:5px;">
+        <span class="material-symbols-outlined icon-inline">schedule</span>10.00 WITA - Selesai
+      </p>
+      <div class="event-venue">
+        <span class="material-symbols-outlined icon-inline">church</span>Gedung Gereja Toraja Jemaat Juata Tarakan
+      </div>
+      <div class="event-address">
+        <span class="material-symbols-outlined icon-inline">location_on</span>Jl. Lili 2, Karang Anyar, Kec. Tarakan Bar.
+      </div>
+      <a class="map-btn" href="https://maps.app.goo.gl/..." target="_blank">Lihat Lokasi</a>
+    </div>
+
+    <div class="event-block reveal">
+      <div class="event-tag">Resepsi</div>
+      <div class="event-date">
+        <span class="material-symbols-outlined icon-inline">calendar_month</span>Kamis, 28 Mei 2026
+      </div>
+      <p style="color:#9e8a72; font-size:11px; margin-top:5px;">
+        <span class="material-symbols-outlined icon-inline">schedule</span>12.00 WITA - Selesai
+      </p>
+      <div class="event-venue">
+        <span class="material-symbols-outlined icon-inline">home</span>Kediaman Mempelai Wanita
+      </div>
+      <div class="event-address">
+        <span class="material-symbols-outlined icon-inline">location_on</span>Jln. Aki Balak, RT 58, NO 18, Tarakan.
+      </div>
+      <a class="map-btn" href="https://maps.app.goo.gl/..." target="_blank">Lihat Lokasi</a>
+    </div>
+
+    <div class="divider-line reveal"><span class="divider-ornament">✦ ✦ ✦</span></div>
+
+    <div class="reveal" style="text-align:center; margin-top: 4rem;">
+      <p style="font-size:10px; color:#c9a96e; letter-spacing:0.4em; text-transform:uppercase; margin-bottom:1rem;">
+        <span class="material-symbols-outlined icon-inline" style="font-size: 20px !important;">featured_seasonal_and_gifts</span>Angpao Digital
+      </p>
+      <p style="font-size: 11px; color: #9e8a72; line-height: 1.6; margin-bottom: 1.5rem; padding: 0 20px; font-style: italic;">
+        Doa restu Anda merupakan hadiah terindah bagi kami. Namun jika memberi adalah tanda kasih, dapat melalui:
+      </p>
+      <div class="event-block">
+        <p style="font-size: 10px; color: #c9a96e; letter-spacing: 2px; margin-bottom: 10px;">BANK BRI</p>
+        <div style="font-family:'Cormorant Garamond', serif; font-size: 22px; color: #f5ede0; letter-spacing: 2px;">
+          <span class="material-symbols-outlined icon-inline">payments</span>4596 0104 3819 536
+        </div>
+        <p style="font-size: 11px; color: #7a6a58; margin-top: 5px;">a.n Rishendy Bunga</p>
+        <button onclick="copyText('459601043819536')" class="map-btn" style="padding: 8px 15px; margin-top: 1rem;">Salin No. Rekening</button>
+      </div>
+    </div>
+
+    <div class="closing-section reveal">
+      <div class="divider-line"><span class="divider-ornament">⋆</span></div>
+      <p class="closing-text">
+        "Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kedua mempelai."
+      </p>
+      <p style="margin-top: 20px; color: #c9a96e; font-size: 11px; letter-spacing: 2px; font-weight: bold;">
+        TERIMA KASIH
+      </p>
+      <div class="divider-line"><span class="divider-ornament">⋆</span></div>
+    </div>
+
+    <div class="reveal" style="margin-top:2rem; text-align: center;">
+      <p style="font-size:10px; color:#c9a96e; letter-spacing:0.3em; text-transform:uppercase;">Menuju Hari Bahagia</p>
+      <div class="countdown-row">
+        <div class="cd-item"><span class="cd-num" id="cd-d">00</span><br><span class="cd-label">Hari</span></div>
+        <div class="cd-item"><span class="cd-num" id="cd-h">00</span><br><span class="cd-label">Jam</span></div>
+        <div class="cd-item"><span class="cd-num" id="cd-m">00</span><br><span class="cd-label">Menit</span></div>
+        <div class="cd-item"><span class="cd-num" id="cd-s">00</span><br><span class="cd-label">Detik</span></div>
+      </div>
+    </div>
+
+    <p class="footer-text reveal">Kami yang berbahagia,<br>Esra & Icha</p>
+  </div>
+</div>
+
+<script>
+  // Intersection Observer untuk animasi reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('active');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Fungsi Salin Rekening
+  function copyText(text) {
+    navigator.clipboard.writeText(text);
+    const btn = event.target;
+    const originalText = btn.innerText;
+    btn.innerText = "BERHASIL DISALIN";
+    setTimeout(() => { btn.innerText = originalText; }, 2000);
+  }
+
+  // Ambil nama dari URL
+  const params = new URLSearchParams(window.location.search);
+  const nama = params.get("to");
+  if (nama) {
+    document.getElementById("namaTamu").textContent = decodeURIComponent(nama.replace(/\+/g, " "));
+  }
+
+  // Musik Control
+  const music = document.getElementById("weddingMusic");
+  const musicIcon = document.getElementById("musicIcon");
+  const musicBtn = document.getElementById("musicControl");
+  let isPlaying = false;
+
+  function toggleMusic() {
+    if (isPlaying) {
+      music.pause();
+      musicIcon.classList.remove("rotating");
+      musicBtn.style.opacity = "0.5";
+    } else {
+      music.play().catch(() => {});
+      musicIcon.classList.add("rotating");
+      musicBtn.style.opacity = "1";
+    }
+    isPlaying = !isPlaying;
+  }
+
+  window.addEventListener('load', () => {
+    if (params.get('play') === 'true') {
+      toggleMusic();
+    }
+  });
+
+  document.body.addEventListener('click', () => {
+    if(!isPlaying) toggleMusic();
+  }, { once: true });
+
+  // Countdown
+  function updateCountdown() {
+    const target = new Date('May 28, 2026 10:00:00').getTime();
+    const now = new Date().getTime();
+    const diff = target - now;
+
+    if (diff <= 0) {
+      document.querySelector('.countdown-row').innerHTML = "<p style='color:#c9a96e; letter-spacing:2px;'>ACARA SEDANG BERLANGSUNG</p>";
+      return;
+    }
+
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById('cd-d').textContent = String(d).padStart(2, '0');
+    document.getElementById('cd-h').textContent = String(h).padStart(2, '0');
+    document.getElementById('cd-m').textContent = String(m).padStart(2, '0');
+    document.getElementById('cd-s').textContent = String(s).padStart(2, '0');
+  }
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+</script>
+
+</body>
+</html>
